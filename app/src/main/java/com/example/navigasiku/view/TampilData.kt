@@ -1,16 +1,17 @@
 @OptIn(markerClass = ExperimentalMaterial3Api::class)
 @Composable
-fun InputNama(
-    nama: String,
-    onNamaChange: (String) -> Unit
+fun FormIsian(
+    jenisK: List<String> = listOf("Laki-laki", "Perempuan"),
+    OnSubmitBtnClick: () -> Unit
 ) {
-    OutlinedTextField(
-        value = nama,
-        onValueChange = onNamaChange,
-        label = { Text("Nama") },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        singleLine = true
-    )
-}
+
+    Scaffold (modifier=Modifier,
+        topBar = {
+            TopAppBar(
+                title = { Text(text = stringResource(id = R.string.nama), color = Color.White) },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = colorResource(id = R.color.teal_700)
+                )
+            )
+        }
+
