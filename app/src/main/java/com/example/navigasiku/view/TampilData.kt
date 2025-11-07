@@ -3,11 +3,13 @@
 fun TampiData(
     onBackBtnClick: () -> Unit
 ) {
+
     val items = listOf(
         Pair(stringResource(id = R.string.nama_lengkap), "Contoh Nama"),
         Pair(stringResource(id = R.string.jenis_kelamin), "Laki-laki"),
         Pair(stringResource(id = R.string.alamat), "Yogyakarta")
     )
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -23,12 +25,14 @@ fun TampiData(
             )
         }
     ) { paddingValues ->
+
         Column(
             modifier = Modifier
-                .padding(dimensionResource(id = R.dimen.padding_medium))
+                .padding(paddingValues)
                 .fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.space_medium))
         ) {
+
             items.forEach { item ->
                 Column {
                     Text(
@@ -48,13 +52,16 @@ fun TampiData(
                         color = Color.Cyan
                     )
                 }
-                Spacer(modifier = Modifier.height(10.dp))
+            }
 
-                Button(
-                    modifier = Modifier.fillMaxWidth(),
-                    onClick = onBackBtnClick
-                ) {
-                    Text(text = stringResource(id = R.string.back))
-                }
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Button(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = onBackBtnClick
+            ) {
+                Text(text = stringResource(id = R.string.back))
             }
         }
+    }
+}
