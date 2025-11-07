@@ -14,16 +14,24 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.navigasiku.ui.theme.NavigasiKuTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Memungkinkan konten terbentang hingga ke tepi layar (di bawah status bar/navigation bar)
         enableEdgeToEdge()
+
+        // Mengatur konten UI menggunakan Jetpack Compose
         setContent {
-            NavigasiKuTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+            // Membungkus seluruh aplikasi dalam Tema (Theme) yang sudah didefinisikan
+            NavigasikuTheme {
+                // Surface adalah wadah yang menerapkan warna latar belakang dan elevasi
+                Surface(
+                    modifier = Modifier.fillMaxSize(), // Mengisi seluruh ukuran layar
+                    color = MaterialTheme.colorScheme.background // Menggunakan warna latar belakang tema
+                ) {
+                    // Panggil fungsi Composable utama aplikasi yang berisi NavHost, dll.
+                    DataApp()
                 }
             }
         }
